@@ -49,10 +49,21 @@ jobs:
   my_deploy: 
     runs-on: ubuntu-latest
     needs: my_testing #начнет стартовать только после выполнения 1 job "My testing"
+    env:
+      VAR1 : "This is test JOB1"
+      VAR2 : "This is test JOB2"
     
     steps: 
       - name: Print Hello Message
         run: echo "Hello World from Deploy job"
+        
+      - name: Print env vars
+        run : 
+          echo "Var1 = ${{ env.VAR1 }}"
+          echo "Var2 = ${{ env.VAR2 }}"
+          echo "Var3 = $LOCAL_VAR   # локальный енв прописываеться как в Линуксе
+        env:
+          LOCAL_VAR: "This is test LOCAL Variable"
         
       - name: Deployment package name
         run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
@@ -61,4 +72,4 @@ jobs:
         run : aws --version
         
       - name: Check version .ZIP
-        run : zip
+        run : zip --version
