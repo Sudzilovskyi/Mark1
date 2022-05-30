@@ -8,7 +8,7 @@
 name: Mark0
 env:
   APPLICATION_NAME       : "MyTest"
-  DEPLOY_PACKAGE_NAME    : "Test_deploy_ver_${{ github.sha }}" #github.sha переменная
+  DEPLOY_PACKAGE_NAME    : "Test_deploy_ver_${{ github.sha }}" #github.sha переменная 1111
   
   
 
