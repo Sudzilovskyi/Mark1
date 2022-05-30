@@ -40,6 +40,12 @@ jobs:
       - name:  List current folder
         run: ls -la
         
+      - name: Git clone my repo
+        uses: actions/checkout@v1 #один из самых первых степов при юзанье (клонирование всего репозитория Github) 
+        
+      - name:  List current folder
+        run: ls -la
+        
   my_deploy: 
     runs-on: ubuntu-latest
     needs: my_testing #начнет стартовать только после выполнения 1 job "My testing"
@@ -50,3 +56,9 @@ jobs:
         
       - name: Deployment package name
         run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
+        
+      - name: Check version AWS
+        run : aws --version
+        
+      - name: Check version .ZIP
+        run : zip
