@@ -6,6 +6,11 @@
 
 
 name: Mark0
+env:
+  APPLICATION_NAME       : "MyTest"
+  DEPLOY_PACKAGE_NAME    : "Test_deploy_ver_${{ github.sha }}" #github.sha переменная
+  
+  
 
 on:
   push:
@@ -26,6 +31,12 @@ jobs:
     steps:
       - name: Print Hello_World
         run: echo "Hello World Testing job"
+      
+      -name: Execure few comands
+      run: |
+        echo "Hello 1"
+        echo "Hello 2"
+        echo "application name: ${{ env.APPLICATION_NAME }}"
         
         
   my_deploy: 
@@ -35,3 +46,6 @@ jobs:
     steps: 
       - name: Print Hello Message
         run: echo "Hello World from Deploy job"
+        
+      - name: Deployment package name
+        run : echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
